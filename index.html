@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Makayla 💖</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        body { font-family: 'Cormorant Garamond', serif; }
+    </style>
+</head>
+<body class="bg-rose-50">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        // Icon Helper Component
+        const Icon = ({ name, className = "" }) => {
+            useEffect(() => { lucide.createIcons(); }, []);
+            return <i data-lucide={name} className={className}></i>;
+        };
+
+        function App() {
+            const [page, setPage] = useState('password');
+            const [pass, setPass] = useState('');
+            const [choice, setChoice] = useState(null);
+            const [yes, setYes] = useState(false);
+            const [pos, setPos] = useState({ x: 0, y: 0 });
+
+            useEffect(() => { lucide.createIcons(); }, [page, choice, yes]);
+
+            const reasons = [
+                "I always feel happy around you.", "Your cuddles make me feel warm.", 
+                "You are the cutest chef ever.", "You make everything fun.", 
+                "You are patient and kind.", "We always support each other.",
+                "Your smile and your laugh.", "Because I said so! :)",
+                "The thought of you makes me smile.", "You are my baby forever.",
+                "I want to love you always.", "And a million more reasons."
+            ];
+
+            const moveNo = () => setPos({ x: Math.random() * 100 - 50, y: Math.random() * 100 - 50 });
+
+            return (
+                <div className="min-h-screen flex items-center justify-center p-4">
+                    {page === 'password' && (
+                        <div className="text-center bg-white/50 p-10 rounded-3xl backdrop-blur-sm border border-rose-100 shadow-xl">
+                            <Icon name="lock" className="text-rose-400 w-12 h-12 mb-4 mx-auto" />
+                            <h1 className="text-3xl font-bold text-rose-900 mb-6 font-serif">A Special Message</h1>
+                            <input type="text" onChange={e => setPass(e.target.value)} placeholder="Password (Your Name)" className="border-2 border-rose-200 p-3 rounded-xl mb-4 w-full outline-none focus:border-rose-400" />
+                            <button onClick={() => pass.toLowerCase() === 'makayla' && setPage('reasons')} className="bg-rose-400 text-white py-3 rounded-xl w-full shadow-lg hover:bg-rose-500 transition">Unlock 🔓</button>
+                        </div>
+                    )}
+
+                    {page === 'reasons' && (
+                        <div className="text-center max-w-lg">
+                            <h2 className="text-3xl font-serif text-rose-900 mb-8">Reasons I Love You 🍫</h2>
+                            <div className="grid grid-cols-3 gap-3 mb-8">
+                                {reasons.map((r, i) => (
+                                    <div key={i} onClick={() => setChoice(i)} className="bg-white p-4 rounded-2xl shadow-sm cursor-pointer hover:shadow-md transition">
+                                        {choice === i ? <span className="text-xs text-rose-700">{r}</span> : <span className="text-2xl">🍫</span>}
+                                    </div>
+                                ))}
+                            </div>
+                            <button onClick={() => setPage('final')} className="bg-rose-400 text-white px-10 py-3 rounded-xl">Continue →</button>
+                        </div>
+                    )}
+
+                    {page === 'final' && (
+                        <div className="text-center">
+                            {!yes ? (
+                                <div className="bg-white/80 p-8 rounded-3xl shadow-2xl backdrop-blur-md">
+                                    <Icon name="heart" className="text-rose-500 w-16 h-16 mx-auto mb-4 fill-rose-500 animate-pulse" />
+                                    <p className="text-rose-900 text-lg mb-6 italic">"Ever since I met you, everything felt so natural..."</p>
+                                    <h3 className="text-2xl font-bold text-rose-900 mb-8 font-serif">Will you be my Valentine?</h3>
+                                    <div className="flex gap-4 justify-center">
+                                        <button onClick={() => setYes(true)} className="bg-rose-500 text-white px-10 py-3 rounded-xl text-xl shadow-lg hover:scale-110 transition">Yes! 💕</button>
+                                        <button style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }} onMouseEnter={moveNo} onClick={moveNo} className="bg-gray-200 text-gray-500 px-8 py-3 rounded-xl">No</button>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="animate-float">
+                                    <h1 className="text-7xl mb-4">🎉💖</h1>
+                                    <h2 className="text-4xl font-serif text-rose-900">Happy Valentine's Day, Makayla!</h2>
+                                </div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
