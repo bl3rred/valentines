@@ -76,8 +76,9 @@ export default function App() {
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute text-rose-200/20"
+            className="absolute text-rose-200"
             style={{
+              opacity: 0.2,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animation: `float ${5 + Math.random() * 10}s ease-in-out infinite`,
@@ -94,14 +95,14 @@ export default function App() {
         <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
           <div className="max-w-md w-full">
             <div className="text-center mb-8 sm:mb-12 animate-slideDown">
-              <div className="inline-block p-4 sm:p-6 bg-rose-200/30 rounded-full mb-4 sm:mb-6 backdrop-blur-sm relative">
+              <div className="inline-block p-4 sm:p-6 bg-rose-200 bg-opacity-30 rounded-full mb-4 sm:mb-6 backdrop-blur-sm relative">
                 <Lock className="w-10 h-10 sm:w-12 sm:h-12 text-rose-400" />
                 <div className="absolute -top-2 -right-2 text-2xl sm:text-3xl animate-bounce">💌</div>
               </div>
               <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-rose-900 mb-3 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
                 A Special Message
               </h1>
-              <p className="text-base sm:text-lg text-rose-700/80 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              <p className="text-base sm:text-lg text-rose-700 text-opacity-80 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 For someone extraordinary
               </p>
               <div className="text-4xl sm:text-5xl mt-4 sm:mt-6 animate-float">💝</div>
@@ -116,14 +117,16 @@ export default function App() {
                   type="text"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border-2 border-rose-200 bg-white/50 backdrop-blur-sm focus:border-rose-300 focus:outline-none focus:ring-4 focus:ring-rose-100 transition-all text-rose-900 placeholder-rose-300 text-base sm:text-lg"
+                  className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-2xl border-2 border-rose-200 bg-white bg-opacity-50 backdrop-blur-sm focus:border-rose-300 focus:outline-none focus:ring-4 focus:ring-rose-100 transition-all text-rose-900 placeholder-rose-300 text-base sm:text-lg"
                   placeholder="Type here..."
                   autoFocus
                 />
               </div>
-              <div className="text-center text-sm text-rose-600/70 italic flex items-center justify-center gap-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              
+              <div className="text-center text-sm text-rose-600 text-opacity-70 italic flex items-center justify-center gap-2" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 <span>💭 Hint: Your name</span>
               </div>
+              
               <button
                 type="submit"
                 className="w-full bg-gradient-to-r from-rose-300 to-pink-300 text-rose-900 py-3 sm:py-4 rounded-2xl font-medium hover:from-rose-400 hover:to-pink-400 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 active:scale-95 text-base sm:text-lg"
@@ -139,14 +142,14 @@ export default function App() {
         <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
           <div className="max-w-4xl w-full">
             <div className="text-center mb-8 sm:mb-12 animate-slideDown">
-              <div className="inline-block p-4 sm:p-6 bg-rose-200/30 rounded-full mb-4 sm:mb-6 backdrop-blur-sm relative">
+              <div className="inline-block p-4 sm:p-6 bg-rose-200 bg-opacity-30 rounded-full mb-4 sm:mb-6 backdrop-blur-sm relative">
                 <Gift className="w-10 h-10 sm:w-12 sm:h-12 text-rose-400" />
                 <div className="absolute -top-1 -right-1 text-xl sm:text-2xl animate-bounce">🎀</div>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-rose-900 mb-3 sm:mb-4 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
                 Reasons I Love You
               </h2>
-              <p className="text-base sm:text-lg text-rose-700/80 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              <p className="text-base sm:text-lg text-rose-700 text-opacity-80 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 Click each chocolate to reveal a reason 🍫
               </p>
             </div>
@@ -161,8 +164,8 @@ export default function App() {
                 >
                   <div className={`relative p-4 sm:p-8 rounded-3xl backdrop-blur-sm transition-all duration-500 ${
                     selectedChocolate === item.id 
-                      ? 'bg-rose-300/40 shadow-2xl' 
-                      : 'bg-white/40 shadow-lg hover:bg-white/60'
+                      ? 'bg-rose-300 bg-opacity-40 shadow-2xl' 
+                      : 'bg-white bg-opacity-40 shadow-lg hover:bg-white hover:bg-opacity-60'
                   }`}>
                     <div className="text-center">
                       <div className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -208,19 +211,19 @@ export default function App() {
         <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 animate-fadeIn">
           <div className="max-w-2xl w-full">
             <div className="text-center mb-8 sm:mb-12 animate-slideDown">
-              <div className="inline-block p-4 sm:p-6 bg-rose-200/30 rounded-full mb-4 sm:mb-6 backdrop-blur-sm relative">
+              <div className="inline-block p-4 sm:p-6 bg-rose-200 bg-opacity-30 rounded-full mb-4 sm:mb-6 backdrop-blur-sm relative">
                 <Sparkles className="w-10 h-10 sm:w-12 sm:h-12 text-rose-400" />
                 <div className="absolute -top-1 -right-1 text-xl sm:text-2xl animate-spin-slow">✨</div>
               </div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-rose-900 mb-3 sm:mb-4 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
                 How Well Do We Match?
               </h2>
-              <p className="text-base sm:text-lg text-rose-700/80 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+              <p className="text-base sm:text-lg text-rose-700 text-opacity-80 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                 Answer these questions about us 💑
               </p>
               {getWrongCount() > 0 && (
                 <div className="mt-4 px-4">
-                  <div className="inline-block bg-rose-200/50 backdrop-blur-sm px-6 py-3 rounded-full animate-bounce">
+                  <div className="inline-block bg-rose-200 bg-opacity-50 backdrop-blur-sm px-6 py-3 rounded-full animate-bounce">
                     <p className="text-rose-800 font-medium text-sm sm:text-base" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                       Oops! {getWrongCount()} {getWrongCount() === 1 ? 'answer is' : 'answers are'} incorrect 😅
                     </p>
@@ -233,7 +236,7 @@ export default function App() {
               {quizQuestions.map((q, index) => (
                 <div 
                   key={q.id} 
-                  className="bg-white/40 backdrop-blur-sm p-4 sm:p-8 rounded-3xl shadow-lg"
+                  className="bg-white bg-opacity-40 backdrop-blur-sm p-4 sm:p-8 rounded-3xl shadow-lg"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <h3 className="text-base sm:text-xl text-rose-900 mb-4 sm:mb-6 font-medium leading-snug" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
@@ -251,10 +254,10 @@ export default function App() {
                           onClick={() => handleQuizAnswer(q.id, option)}
                           className={`px-4 sm:px-6 py-3 sm:py-4 rounded-2xl font-medium transition-all duration-300 text-sm sm:text-base ${
                             isWrong
-                              ? 'bg-rose-200/60 text-rose-900 shadow-lg scale-105 border-2 border-rose-400'
+                              ? 'bg-rose-200 bg-opacity-60 text-rose-900 shadow-lg scale-105 border-2 border-rose-400'
                               : isSelected
                               ? 'bg-gradient-to-r from-rose-300 to-pink-300 text-rose-900 shadow-lg scale-105'
-                              : 'bg-white/60 text-rose-700 hover:bg-white/80 active:scale-95'
+                              : 'bg-white bg-opacity-60 text-rose-700 hover:bg-white hover:bg-opacity-80 active:scale-95'
                           }`}
                         >
                           {option} {isWrong && '❌'}
@@ -282,29 +285,27 @@ export default function App() {
       {currentPage === 'final' && (
         <div className="min-h-screen flex items-center justify-center p-4 sm:p-6 animate-fadeIn relative overflow-hidden">
           {showCelebration && (
-            <>
-              <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                {[...Array(50)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="absolute text-2xl sm:text-3xl md:text-4xl animate-float"
-                    style={{
-                      left: `${Math.random() * 100}%`,
-                      top: `-20%`,
-                      animation: `fall ${2 + Math.random() * 3}s ease-out forwards`,
-                      animationDelay: `${Math.random() * 2}s`,
-                    }}
-                  >
-                    {['❤️', '💕', '💖', '🌹', '✨', '💝', '💗', '🎀'][Math.floor(Math.random() * 8)]}
-                  </div>
-                ))}
-              </div>
-            </>
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+              {[...Array(50)].map((_, i) => (
+                <div
+                  key={i}
+                  className="absolute text-2xl sm:text-3xl md:text-4xl animate-float"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `-20%`,
+                    animation: `fall ${2 + Math.random() * 3}s ease-out forwards`,
+                    animationDelay: `${Math.random() * 2}s`,
+                  }}
+                >
+                  {['❤️', '💕', '💖', '🌹', '✨', '💝', '💗', '🎀'][Math.floor(Math.random() * 8)]}
+                </div>
+              ))}
+            </div>
           )}
 
           <div className="max-w-2xl w-full text-center relative z-10">
             <div className="mb-8 sm:mb-12 animate-slideDown">
-              <div className="inline-block p-6 sm:p-8 bg-rose-200/30 rounded-full mb-6 sm:mb-8 backdrop-blur-sm animate-pulse relative">
+              <div className="inline-block p-6 sm:p-8 bg-rose-200 bg-opacity-30 rounded-full mb-6 sm:mb-8 backdrop-blur-sm animate-pulse relative">
                 <Heart className="w-12 h-12 sm:w-16 sm:h-16 text-rose-400 fill-current" />
               </div>
               
@@ -312,7 +313,7 @@ export default function App() {
                 A Message for my Love
               </h2>
               
-              <div className="bg-white/40 backdrop-blur-sm p-6 sm:p-12 rounded-3xl shadow-2xl mb-6 sm:mb-8 animate-slideUp mx-4">
+              <div className="bg-white bg-opacity-40 backdrop-blur-sm p-6 sm:p-12 rounded-3xl shadow-2xl mb-6 sm:mb-8 animate-slideUp mx-4">
                 <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                   Hello my love,
                 </p>
@@ -357,7 +358,26 @@ export default function App() {
             </div>
           </div>
         </div>
-      </div>
+      )}
+
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;600&display=swap');
+        
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        @keyframes fall { to { transform: translateY(120vh) rotate(360deg); opacity: 0; } }
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .animate-slideDown { animation: slideDown 0.8s ease-out; }
+        .animate-slideUp { animation: slideUp 0.8s ease-out; }
+        .animate-scaleIn { animation: scaleIn 0.6s ease-out; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin-slow 3s linear infinite; }
+      `}</style>
     </div>
   );
 }
