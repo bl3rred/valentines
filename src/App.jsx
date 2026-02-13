@@ -307,40 +307,50 @@ export default function App() {
             <div className="mb-8 sm:mb-12 animate-slideDown">
               <div className="inline-block p-6 sm:p-8 bg-rose-200 bg-opacity-30 rounded-full mb-6 sm:mb-8 backdrop-blur-sm animate-pulse relative">
                 <Heart className="w-12 h-12 sm:w-16 sm:h-16 text-rose-400 fill-current" />
+                <div className="absolute -top-2 -right-2 text-3xl sm:text-4xl">💝</div>
+                <div className="absolute -bottom-2 -left-2 text-3xl sm:text-4xl">🌹</div>
               </div>
               
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-serif text-rose-900 mb-6 sm:mb-8 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
                 A Message for my Love
               </h2>
+              <p className="text-lg sm:text-xl text-rose-700 text-opacity-80 mb-6 sm:mb-8 px-4 font-medium" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                (HER EYES ONLY GRRRR) 👀
+              </p>
               
               <div className="bg-white bg-opacity-40 backdrop-blur-sm p-6 sm:p-12 rounded-3xl shadow-2xl mb-6 sm:mb-8 animate-slideUp mx-4">
-                <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed mb-4 text-left" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
                   Hello my love,
                 </p>
-                <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed mb-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                  I love you so much, and I hope that we may continue our love forever.
+                <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed mb-4 text-left" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                  I know I haven't written anything like this for you in awhile, and honestly this is my second go because I might have lost my last version of this whole thing on accident. I love you so much, and I know I always tell you that I love you more, but that's just how it feels to me. I'm thankful for you, and always will be, and I hope that we may continue our love forever. Because if I have your love, it's almost like we can do anything.
                 </p>
-                <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
-                  Will you be my valentine?
+                <p className="text-base sm:text-lg md:text-xl text-rose-900 leading-relaxed text-left" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                  Ever since I've met you, I've never second guessed or thought differently when it came to you. Everything felt so natural, meant to be. With valentines day coming up I wish us many more from this life to the next, and for the first time may I ask, will you be my valentine?
                 </p>
               </div>
 
               {!showCelebration ? (
                 <div className="animate-scaleIn">
-                  <h3 className="text-2xl sm:text-3xl font-serif text-rose-900 mb-8">Will you be my Valentine? 💖</h3>
-                  <div className="flex flex-col sm:flex-row gap-6 justify-center items-center px-4 relative">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif text-rose-900 mb-6 sm:mb-8 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+                    Will you be my Valentine? 💖
+                  </h3>
+                  <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4 relative">
                     <button
                       onClick={handleFinalYes}
-                      className="bg-gradient-to-r from-rose-400 to-pink-400 text-white px-16 py-6 rounded-2xl text-2xl font-medium shadow-2xl transition-all"
+                      className="w-full sm:w-auto bg-gradient-to-r from-rose-400 to-pink-400 text-white px-12 sm:px-16 py-4 sm:py-6 rounded-2xl text-xl sm:text-2xl font-medium hover:from-rose-500 hover:to-pink-500 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:scale-105 active:scale-95 z-10"
+                      style={{ fontFamily: 'Cormorant Garamond, serif' }}
                     >
                       Yes! 💕
                     </button>
                     <button
                       ref={noButtonRef}
                       onMouseEnter={moveNoButton}
+                      onTouchStart={moveNoButton}
                       onClick={moveNoButton}
-                      className="bg-gray-300 text-gray-700 px-16 py-6 rounded-2xl text-2xl transition-all"
+                      className="w-full sm:w-auto bg-gradient-to-r from-gray-300 to-gray-400 text-gray-700 px-12 sm:px-16 py-4 sm:py-6 rounded-2xl text-xl sm:text-2xl font-medium transition-all duration-200 shadow-xl z-10"
                       style={{ 
+                        fontFamily: 'Cormorant Garamond, serif',
                         transform: `translate(${noButtonPosition.x}px, ${noButtonPosition.y}px)`,
                         position: noAttempts > 0 ? 'absolute' : 'relative'
                       }}
@@ -348,11 +358,19 @@ export default function App() {
                       No 😔
                     </button>
                   </div>
+                  <p className="text-xs sm:text-sm text-rose-500 text-opacity-60 mt-6 sm:mt-8 italic px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                    (Hint: There's only one right answer 😉)
+                  </p>
                 </div>
               ) : (
-                <div className="animate-scaleIn space-y-6">
-                  <div className="text-7xl animate-bounce">🎉</div>
-                  <h3 className="text-4xl font-serif text-rose-900">Happy Valentine's Day! ✨</h3>
+                <div className="animate-scaleIn space-y-4 sm:space-y-6">
+                  <div className="text-6xl sm:text-7xl md:text-8xl mb-4 animate-bounce">🎉</div>
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-serif text-rose-900 mb-4 sm:mb-6 px-4" style={{ fontFamily: 'Playfair Display, serif' }}>
+                    You've made me the happiest! 💕
+                  </h3>
+                  <p className="text-xl sm:text-2xl md:text-3xl text-rose-700 mb-4 px-4" style={{ fontFamily: 'Cormorant Garamond, serif' }}>
+                    Happy Valentine's Day, my love! ✨
+                  </p>
                 </div>
               )}
             </div>
